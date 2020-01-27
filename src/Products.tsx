@@ -1,21 +1,30 @@
 import React from 'react'
-import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core'
+import MUIDataTable from 'mui-datatables'
 
-export default function Products() {
+type Props = {
+  data: any[]
+}
+export default function Products(props: Props) {
+
+  const columns = 
+  ["Price", "Description", "Category", "Product name",
+"Page title", "Image URL", "Options", "Parts Brand", "Model Brand",
+"Model Year", "Displacement", "Model Name", "JAN"];
+
+// const data = [
+//  ["Joe James", "Test Corp", "Yonkers", "NY"],
+//  ["John Walsh", "Test Corp", "Hartford", "CT"],
+//  ["Bob Herm", "Test Corp", "Tampa", "FL"],
+//  ["James Houston", "Test Corp", "Dallas", "TX"],
+// ];
+
+const options = {
+  filterType: 'checkbox',
+};
   return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <MUIDataTable
+      title={'aaaaaa'}
+      data={props.data} columns={columns}
+    />
   )
 }
