@@ -2,6 +2,7 @@ import React,{ useCallback, useState } from 'react';
 import Products from './Products';
 import Dropzone, { useDropzone } from 'react-dropzone'
 import csv from 'csv-parser'
+import Loader from 'react-loader-spinner'
 
 
 const App: React.FC = () => {
@@ -17,10 +18,9 @@ const App: React.FC = () => {
         let results: any[] = []
         stream.on('data', (data) => {
           results.push(data)
-          // setData(data)
-        }).on('end', () => {
-          debugger
-          
+        })
+        stream.on('end', () => {
+          console.log("load end")
         })
         setData(results)
       }

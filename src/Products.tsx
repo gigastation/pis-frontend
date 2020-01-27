@@ -1,5 +1,6 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
+import src from '*.webp'
 
 type Props = {
   data: any[]
@@ -7,8 +8,27 @@ type Props = {
 export default function Products(props: Props) {
 
   const columns = 
-  ["Price", "Description", "Category", "Product name",
-"Page title", "Image URL", "Options", "Parts Brand", "Model Brand",
+  ["Price", 
+  {
+    name: "Description",
+    options: {
+    customBodyRender: (value: any, tableMeta: any, updateValue: any) => {
+      return (
+        <div dangerouslySetInnerHTML={{ __html: value }} />
+      )
+    }
+  }}, "Category", "Product name",
+"Page title", 
+  { name: "Image URL",
+    options: {
+      customBodyRender: (value: any, tableMeta: any, updateValue: any) => {
+        return (
+          <img src={value} />
+        )
+      }
+    }
+  }, 
+  "Options", "Parts Brand", "Model Brand",
 "Model Year", "Displacement", "Model Name", "JAN"];
 
 // const data = [
