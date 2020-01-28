@@ -1,5 +1,6 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
+import {Card, CardMedia, CardActionArea} from '@material-ui/core'
 import src from '*.webp'
 
 type Props = {
@@ -23,7 +24,13 @@ export default function Products(props: Props) {
     options: {
       customBodyRender: (value: any, tableMeta: any, updateValue: any) => {
         return (
-          <img src={value} />
+          <Card>
+            <CardActionArea>
+            <CardMedia
+            image={value}
+            />
+            </CardActionArea>
+          </Card>
         )
       }
     }
