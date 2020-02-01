@@ -7,13 +7,14 @@ import Loader from 'react-loader-spinner'
 const App: React.FC = () => {
   useEffect(() => {
     fetch('./datafeed_01172020.csv')
-    .then((r) => r.text())
+    .then((r) => r.arrayBuffer())
     .then(async text  => {
-      const arr = await csv2array(text)
+      const encoded = new TextDecoder('Shift_JIS').decode(text)
+      const arr = await csv2array(encoded)
       console.log(arr)
       setData(arr)
-    },[])
-  })
+    })
+  },[])
   
   const csv2array = ((content: string) => {
     const stream = csv({ separator: '\t' })
